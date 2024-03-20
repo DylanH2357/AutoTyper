@@ -21,7 +21,7 @@ def suppress_keyboard():
     
     keyCode = "left_shift"  # KeyCode #1
     # Define the path to the Karabiner JSON file
-    karabinerFilePath = "path_to_your_file/.config/karabiner/karabiner.json"
+    karabinerFilePath = "path_to_your_file/.config/karabiner/karabiner.json" # error occurs here (for obvious reasons)
     macConfigPath = f"{configDir}macConfig.json"
 
     with open(karabinerFilePath, "r") as file:
@@ -46,7 +46,7 @@ def regain_keyboard():
     Reapplies the standard Karabiner keybinding profile to return the keyboard to normal
     """
     
-    karabinerFilePath = "path_to_your_file/.config/karabiner/karabiner.json"
+    karabinerFilePath = "path_to_your_file/.config/karabiner/karabiner.json" # error occurs here (for obvious reasons)
     
     with open(karabinerFilePath, "r") as file:
         data = json.load(file)
