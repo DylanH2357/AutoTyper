@@ -6,7 +6,7 @@ import os
 
 '''
 
-sudo python3 /Users/dylanhackos/Documents/Scripts/Karabiner/KeyboardRemapping.py
+sudo python3 path_to_your_file/KeyboardRemapping.py
 
 '''
 
@@ -14,12 +14,13 @@ textDir = os.path.dirname()
 
 def suppress_keyboard():
     """
-    Suppresses keyboard inputs by rebinding all key presses to left shift
+    Suppresses keyboard inputs by rebinding most key presses to left shift. 
+    This makes it easier to register an individual keypress of any key to perform an action.
     """
+    
     keyCode = "left_shift"  # KeyCode #1
-    false = False
     # Define the path to the Karabiner JSON file
-    karabinerFilePath = "/Users/dylanhackos/.config/karabiner/karabiner.json"
+    karabinerFilePath = "path_to_your_file/.config/karabiner/karabiner.json"
     macConfigPath = f"{os.path.dirname()}macConfig.json"
 
     with open(karabinerFilePath, "r") as file:
@@ -33,6 +34,7 @@ def suppress_keyboard():
 
     # Update the "rules" portion with the new rule
     data["profiles"][0]["complex_modifications"]["rules"].append(newRules)
+    
     # Write the modified JSON back to the file
     with open(karabinerFilePath, "w") as file:
         json.dump(data, file, indent=4)
@@ -42,13 +44,17 @@ def regain_keyboard():
     """
     Reapplies the standard Karabiner keybinding profile to return the keyboard to normal
     """
-    karabiner_file_path = "/Users/dylanhackos/.config/karabiner/karabiner.json"
-    with open(karabiner_file_path, "r") as file:
+    
+    karabinerFilePath = "path_to_your_file/.config/karabiner/karabiner.json"
+    
+    with open(karabinerFilePath, "r") as file:
         data = json.load(file)
+    
     # Set the "rules" portion to an empty list
     data["profiles"][0]["complex_modifications"]["rules"] = []
+    
     # Write the modified JSON back to the file
-    with open(karabiner_file_path, "w") as file:
+    with open(karabinerFilePath, "w") as file:
         json.dump(data, file, indent=4)
 
 
@@ -59,6 +65,7 @@ def main_program():
     Returns:
         null
     """
+    
     print("The program will begin when the control key is pressed twice within a second...")
     ctrl_pressed_time = 0
     ctrl_pressed_count = 0
@@ -67,7 +74,7 @@ def main_program():
     command_pressed_time = 0
     command_pressed_count = 0
 
-    while True:
+    while ctrl_pressed_count < 2:
         event = k.read_event()
         if event.event_type == "down":  # check for key press
             if event.name == "ctrl":
@@ -78,10 +85,8 @@ def main_program():
                 else:
                     ctrl_pressed_count = 1
                 ctrl_pressed_time = current_time
-                # If ctrl pressed twice within a second
-                if ctrl_pressed_count == 2:
-                    print("Starting program")
-                    break
+    
+    print("Starting program")
 
     suppress_keyboard()
 
@@ -126,7 +131,7 @@ def main_program():
                     ctrl_pressed_count = 1
                 ctrl_pressed_time = current_time
                 # If ctrl pressed twice within a second
-                if ctrl_pressed_count == 2 and paused == False:  # if not paused
+                if ctrl_pressed_count == 2 and not paused:  # if not paused
                     print("Pausing Program")
                     regain_keyboard()
                     paused = True  # now paused
@@ -162,10 +167,8 @@ def main_program():
                 # If return pressed twice within a second
                 if command_pressed_count == 2:
                     print("Switching Texts")
-                    if j == 19:
-                        j = -1  # reset to text #1
                     i = 0  # go to the beginning of the text
-                    j += 1
+                    j = (j + 1) % len(texts)
                     currentText = texts[(list(texts.keys())[j])]
 
             if paused == False and event.name not in ["ctrl", "command", "right shift", "up", "down", "right"]:
@@ -182,6 +185,6 @@ except:
 
 '''
 
-sudo python3 /Users/dylanhackos/Documents/Scripts/Karabiner/KeyboardRemapping.py
+sudo python3 path_to_your_file/MacKeyboardRemapper.py
 
 '''
