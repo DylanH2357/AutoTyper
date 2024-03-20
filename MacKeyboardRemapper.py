@@ -131,7 +131,7 @@ def main_program():
                 else:
                     ctrl_pressed_count = 1
                 ctrl_pressed_time = current_time
-                # If ctrl pressed twice within a second
+                # If the left ctrl key is pressed twice within a second...
                 if ctrl_pressed_count == 2 and not paused:  # if not paused
                     print("Pausing Program")
                     regain_keyboard()
@@ -144,13 +144,13 @@ def main_program():
             # for exiting the program
             if event.name == "right shift":
                 current_time = t.time()
-                # Check if it's within 1 second since the last right shift press
+                # Check if it's within 1 second since the last right-shift press
                 if current_time - right_shift_pressed_time <= 1:
                     right_shift_pressed_count += 1
                 else:
                     right_shift_pressed_count = 1
                 right_shift_pressed_time = current_time
-                # If right shift pressed twice within a second
+                # If the right shift key is pressed twice within a second...
                 if right_shift_pressed_count == 2:
                     print("Exiting Program")
                     regain_keyboard()
@@ -165,7 +165,7 @@ def main_program():
                 else:
                     command_pressed_count = 1
                 command_pressed_time = current_time
-                # If return pressed twice within a second
+                # If return is pressed twice within a second
                 if command_pressed_count == 2:
                     print("Switching Texts")
                     i = 0  # go to the beginning of the text
