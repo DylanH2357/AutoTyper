@@ -2163,7 +2163,7 @@ def suppress_keyboard():
 
 
 def regain_keyboard():
-    karabiner_file_path = "/Users/dylanhackos/.config/karabiner/karabiner.json"
+    karabiner_file_path = "/path_to_your_file/karabiner.json"
     with open(karabiner_file_path, "r") as file:
         data = json.load(file)
     # Set the "rules" portion to an empty list
