@@ -10,7 +10,7 @@ sudo python3 path_to_your_file/KeyboardRemapping.py
 
 '''
 
-textDir = os.path.dirname()
+textDir = os.path.dirname(__file__)
 
 def suppress_keyboard():
     """
@@ -21,7 +21,7 @@ def suppress_keyboard():
     keyCode = "left_shift"  # KeyCode #1
     # Define the path to the Karabiner JSON file
     karabinerFilePath = "path_to_your_file/.config/karabiner/karabiner.json"
-    macConfigPath = f"{os.path.dirname()}macConfig.json"
+    macConfigPath = f"{os.path.dirname(__file__)}macConfig.json"
 
     with open(karabinerFilePath, "r") as file:
         data = json.load(file)
