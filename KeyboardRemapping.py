@@ -5,7 +5,7 @@ import sys
 
 '''
 
-sudo python3 /Users/dylanhackos/Documents/Scripts/Karabiner/KeyboardRemapping.py
+sudo python3 path_to_your_file
 
 '''
 
@@ -13,7 +13,7 @@ def suppress_keyboard():
     keyCode = "left_shift"  # KeyCode #1
     false = False
     # Define the path to the Karabiner JSON file
-    karabiner_file_path = "/Users/dylanhackos/.config/karabiner/karabiner.json"
+    karabiner_file_path = "path_to_your_file/karabiner.json"
     new_rule = {
     "description": "Fast Key Press",
     "manipulators": [
@@ -2295,6 +2295,6 @@ except:
 
 '''
 
-sudo python3 /Users/dylanhackos/Documents/Scripts/Karabiner/KeyboardRemapping.py
+sudo python3 path_to_your_file/KeyboardRemapping.py
 
 '''
