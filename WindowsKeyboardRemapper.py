@@ -4,7 +4,9 @@ import keyboard as k
 import sys
 import os
 import pynput as p
+from ahk import AHK
 
+ahk = AHK()
 textDir = f"{os.path.dirname(__file__)}\\Texts"
 configDir = f"{os.path.dirname(__file__)}\\Configs"
 suppressedKeys = ["a", "b", "d", "e", "f", 
@@ -22,8 +24,14 @@ def suppress_keyboard():
     
     print("Suppressing keyboard")
         
-    for i in suppressedKeys:
-        k.remap_key(i, "shift")
+    # for i in suppressedKeys:
+    #     k.remap_key(i, "shift")
+    
+    appliedConfig = open(f"{configDir}\\AppliedWindowsConfig.ahk", "w+")
+    with open(f"{configDir}\\WindowsConfig.ahk", "r") as config:
+        for i in config:
+            i = i.replace("keybinding", "LeftShift")
+            appliedConfig.write(i)
     
 def regain_keyboard():
     """
@@ -154,7 +162,8 @@ def main_program():
     print("Text completed")
     regain_keyboard()
     
-try:
-    main_program()
-except:
-    regain_keyboard()
+suppress_keyboard()
+# try:
+#     main_program()
+# except:
+#     regain_keyboard()
