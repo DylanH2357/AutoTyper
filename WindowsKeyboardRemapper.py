@@ -4,6 +4,7 @@ import keyboard as k
 import sys
 import os
 import pynput as p
+import subprocess
 from ahk import AHK
 
 ahk = AHK()
@@ -32,15 +33,19 @@ def suppress_keyboard():
         print("Applying config")
         for i in config:
             i = i.replace("keybinding", "LShift")
+            # i = i.replace("keybinding", "a")
+
             appliedConfig.write(i)
+    
+    appliedConfig.close()
         
-    ahk.run_script(f"{configDir}\\AppliedWindowsConfig.ahk", blocking=True)
+    # ahk.run_script(f"{configDir}\\AppliedWindowsConfig.ahk", blocking=True)
+    subprocess.call(f"{configDir}\\AppliedWindowsConfig.ahk", shell=True)
     
 def regain_keyboard():
     """
     Reapplies standard keyboard bindings
     """
-    
     print("Regaining keyboard")
     k.press_and_release("esc")
     # ahk.run_script(f"{configDir}\\DefaultWindowsConfig.ahk")
