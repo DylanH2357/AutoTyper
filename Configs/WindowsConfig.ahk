@@ -1,8 +1,8 @@
-#Requires AutoHotkey v2.0
-
+#SingleInstance Force
+A_HotkeyInterval := 1000
+A_MaxHotkeysPerInterval := 200
 a::keybinding
 b::keybinding
-c::keybinding
 d::keybinding
 e::keybinding
 f::keybinding

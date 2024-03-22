@@ -1,28 +1,28 @@
-#Requires AutoHotkey v2.0
-
-a::LeftShift
-b::LeftShift
-c::LeftShift
-d::LeftShift
-e::LeftShift
-f::LeftShift
-g::LeftShift
-h::LeftShift
-i::LeftShift
-j::LeftShift
-k::LeftShift
-l::LeftShift
-m::LeftShift
-n::LeftShift
-o::LeftShift
-p::LeftShift
-q::LeftShift
-r::LeftShift
-s::LeftShift
-t::LeftShift
-u::LeftShift
-v::LeftShift
-w::LeftShift
-x::LeftShift
-y::LeftShift
-z::LeftShift
+#SingleInstance Force
+A_HotkeyInterval := 1000
+A_MaxHotkeysPerInterval := 200
+a::LShift
+b::LShift
+d::LShift
+e::LShift
+f::LShift
+g::LShift
+h::LShift
+i::LShift
+j::LShift
+k::LShift
+l::LShift
+m::LShift
+n::LShift
+o::LShift
+p::LShift
+q::LShift
+r::LShift
+s::LShift
+t::LShift
+u::LShift
+v::LShift
+w::LShift
+x::LShift
+y::LShift
+z::LShift

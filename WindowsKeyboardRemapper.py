@@ -29,9 +29,12 @@ def suppress_keyboard():
     
     appliedConfig = open(f"{configDir}\\AppliedWindowsConfig.ahk", "w+")
     with open(f"{configDir}\\WindowsConfig.ahk", "r") as config:
+        print("Applying config")
         for i in config:
-            i = i.replace("keybinding", "LeftShift")
+            i = i.replace("keybinding", "LShift")
             appliedConfig.write(i)
+        
+    ahk.run_script(f"{configDir}\\AppliedWindowsConfig.ahk", blocking=True)
     
 def regain_keyboard():
     """
@@ -39,7 +42,7 @@ def regain_keyboard():
     """
     
     print("Regaining keyboard")
-    k.unhook_all()
+    ahk.run_script(f"{configDir}\\DefaultWindowsConfig.ahk")
 
 def main_program():
     """
@@ -161,9 +164,10 @@ def main_program():
 
     print("Text completed")
     regain_keyboard()
+    sys.exit()
     
-suppress_keyboard()
-# try:
-#     main_program()
-# except:
-#     regain_keyboard()
+try:
+    main_program()
+except:
+    regain_keyboard()
+    sys.exit()
