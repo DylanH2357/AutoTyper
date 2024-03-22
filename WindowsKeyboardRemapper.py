@@ -42,11 +42,12 @@ def regain_keyboard():
     """
     
     print("Regaining keyboard")
-    ahk.run_script(f"{configDir}\\DefaultWindowsConfig.ahk")
+    k.press_and_release("esc")
+    # ahk.run_script(f"{configDir}\\DefaultWindowsConfig.ahk")
 
 def main_program():
     """
-    Performs main program functions
+    Performs main program functions and logic
 
     Returns:
         null

@@ -25,4 +25,4 @@ w::w
 x::x
 y::y
 z::z
-ExitApp
+Esc::ExitApp
